@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:8bd33a676137a3feb297df454ef80adc6c00229898ff7d45cf4638d5043a7fa6",
+    "sourceHashKind": "text",
+    "programmingLanguage": "properties"
+  },
+  "defaults": {
+    "createdAt": "2026-08-29T12:29:46.996Z",
+    "updatedAt": "2026-08-29T12:29:46.996Z"
+  },
+  "fileNote": {
+    "userNote": "代码怎么写得整齐\n\n统一项目的代码格式规则，比如缩进、换行、编码，让不同编辑器/开发者写出来的代码风格一致。(是.prettier等的补充)",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

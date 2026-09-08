@@ -1,0 +1,16 @@
+{
+  "source": {
+    "sourceHash": "sha256:974b341d5ddd5f5bdb6fbb9c8a81104096a1fddce1097f6606c5603e10b75977",
+    "sourceHashKind": "text",
+    "programmingLanguage": "ignore"
+  },
+  "defaults": {
+    "createdAt": "2026-08-28T03:04:16.013Z",
+    "updatedAt": "2026-08-28T03:04:36.244Z"
+  },
+  "fileNote": {
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

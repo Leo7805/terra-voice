@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:849bb39d0801dc236481b30013cffa38dbbae9fe00258aa554ca94e365a82f11",
+    "sourceHashKind": "text",
+    "programmingLanguage": "markdown"
+  },
+  "defaults": {
+    "createdAt": "2026-08-29T12:15:37.151Z",
+    "updatedAt": "2026-08-29T13:11:10.539Z"
+  },
+  "fileNote": {
+    "userNote": "一个短 Roadmap 管全局；Roadmap 永远一行一个任务；简单任务直接做；复杂任务开始做之前才创建 detail plan (单独 plan 文件). 完成后保留在 Git 里作为项目记录。\n\nworkflow:\n\nroadmap.md\n   ↓\n7.1 一句话\n7.2 一句话\n7.3 一句话\n...\n   ↓\n你选：现在做 7.5\n   ↓\n7.5 比较复杂？\n   ├─ No  → 直接做\n   └─ Yes → 创建 7.5-cicd.md\n               ↓\n          详细步骤\n               ↓\n          你批准\n               ↓\n             实现\n               ↓\n             验证\n               ↓\n          roadmap 打勾\n\n\n\n\n## Roadmap\n\n- [x] 1. Initial setup\n- [ ] 2. Backend deployment\n- [ ] 3. Restructure\n- [ ] 4. Playground improvements",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

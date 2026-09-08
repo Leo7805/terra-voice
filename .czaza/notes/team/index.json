@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 2,
+  "updatedAt": "2026-08-28T03:04:16.013Z",
+  "workspaceRoot": "/Users/leo/Projects/terra-voice",
+  "files": {
+    ".dockerignore": {
+      "noteFile": "files/2f754321d62f-8349161e.json",
+      "sourceHash": "sha256:974b341d5ddd5f5bdb6fbb9c8a81104096a1fddce1097f6606c5603e10b75977",
+      "programmingLanguage": "ignore",
+      "updatedAt": "2026-08-28T03:04:16.013Z"
+    }
+  }
+}

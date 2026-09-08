@@ -1,0 +1,28 @@
+@host = http://localhost:5059
+
+###
+GET {{host}}/
+Accept: application/json
+
+###
+POST {{host}}/tts
+Content-Type: application/json
+
+{
+  "text": "hello world",
+  "voiceName": "en-AU-NatashaNeural"
+}
+
+###
+POST {{host}}/tts
+Content-Type: application/json
+
+{
+  "text": "hello world this is a slower speech test",
+  "voiceName": "en-AU-NatashaNeural",
+  "speakingRate": 0.8
+}
+
+###
+GET {{host}}/usage
+Accept: application/json

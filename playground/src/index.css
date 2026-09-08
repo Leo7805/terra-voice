@@ -1,0 +1,19 @@
+/*
+  Use border-box globally: width/height include padding and border.
+  This keeps layout sizing predictable and avoids accidental overflow.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+  Build a reliable root height chain: html -> body -> #root are 100%.
+  This helps full-height app layouts behave consistently.
+*/
+html,
+body,
+#root {
+  height: 100%;
+}

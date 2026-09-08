@@ -1,0 +1,139 @@
+{
+  "source": {
+    "sourceHash": "sha256:aff26c6a32554a7376cae47483627534ab259c1e8355e9ada79bed480a1c67e0",
+    "sourceHashKind": "text",
+    "programmingLanguage": "dockerfile"
+  },
+  "defaults": {
+    "createdAt": "2026-08-28T03:05:32.307Z",
+    "updatedAt": "2026-09-08T10:58:06.675Z"
+  },
+  "fileNote": {
+    "userNote": "multi-stage build (SDK → aspnet:10.0), restore-then-publish, listens on :8080 inside the container.\n\nDockerfile 只是定义构建和运行阶段的步骤；什么时候执行构建、什么时候启动容器，是由你在命令行或 CI/CD 决定的。\n\n🔥 Dockerfile 只负责“造镜像”，不负责“怎么运行容器”。\n🔥 映像（Image）构建好之后，运行阶段通常只需要 docker‑compose.yml，不需要再动 Dockerfile。",
+    "createdBy": "user",
+    "updatedAt": "2026-09-08T11:31:20.526Z"
+  },
+  "sectionNotes": {
+    "section:user:1-9": {
+      "title": "",
+      "range": {
+        "startLine": 1,
+        "endLine": 9
+      },
+      "anchorHash": "sha256:5d294ff0269d5d4453dadac9c973827d2e8c7349d25ae7c3a5f70e669f803fb0",
+      "userNote": "Build Stage — compile & publish your API\n\n这一段 Dockerfile 用 .NET SDK 镜像编译你的项目：先复制并 restore csproj 以利用缓存，再复制全部代码并 publish，最终生成可运行的发布产物到 /app/publish。",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T10:52:25.037Z",
+      "updatedAt": "2026-09-08T11:12:49.193Z"
+    },
+    "section:user:11-19": {
+      "title": "",
+      "range": {
+        "startLine": 11,
+        "endLine": 19
+      },
+      "anchorHash": "sha256:7da564b31d12d51bb1fded91d4b9e57fbb563413230e5d1e8944f658934b4c0e",
+      "userNote": "这一段运行阶段使用轻量级 ASP.NET Core Runtime 镜像，将构建阶段生成的发布产物复制到 /app，配置容器监听 8080 端口，并通过 dotnet TerraVoice.Api.dll 启动最终的应用进程。",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T11:13:15.416Z",
+      "updatedAt": "2026-09-08T11:13:15.416Z"
+    }
+  },
+  "lineNotes": {
+    "line:4": {
+      "line": 4,
+      "anchorText": "FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build",
+      "userNote": "用 .NET 10 SDK 镜像作为构建阶段的基础环境，并把这个阶段命名为 build。\n\n命名 build 的作用就是：让后续阶段能通过 --from=build 精确引用这个构建阶段的产物。\n",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T10:52:49.473Z",
+      "updatedAt": "2026-09-08T10:59:38.852Z"
+    },
+    "line:5": {
+      "line": 5,
+      "anchorText": "WORKDIR /src",
+      "userNote": "把容器里的“当前工作目录”切换到 /src (这是容器内部的目录, / 是容器内部的根目录)\n\nSets working directory inside the container to /src.\n\n",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T10:53:42.002Z"
+    },
+    "line:6": {
+      "line": 6,
+      "anchorText": "COPY [\"src/TerraVoice.Api/TerraVoice.Api.csproj\", \"src/TerraVoice.Api/\"]",
+      "userNote": "把你本机项目里的 csproj 文件复制到容器内部的 /src/src/TerraVoice.Api/ 目录。\n\n这是为了 提前 restore（只 restore 项目文件，不 restore 整个代码），从而 利用 Docker 缓存。\n\n\n[解释]\n只 restore 项目文件 = 只根据 .csproj 下载 NuGet 包，不处理你的代码文件。\n\n因为只要 .csproj 不变，restore 就能用 Docker 缓存，不会重复下载 NuGet 包，构建速度能快几倍。\n",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T11:04:23.708Z",
+      "updatedAt": "2026-09-08T11:06:22.716Z"
+    },
+    "line:7": {
+      "line": 7,
+      "anchorText": "RUN dotnet restore \"src/TerraVoice.Api/TerraVoice.Api.csproj\"",
+      "userNote": "在容器里执行 dotnet restore，根据 csproj 下载 NuGet 包依赖。\n",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T11:06:50.796Z",
+      "updatedAt": "2026-09-08T11:06:56.295Z"
+    },
+    "line:8": {
+      "line": 8,
+      "anchorText": "COPY . .",
+      "userNote": "COPY . . = 把你本机构建上下文里的所有文件复制到容器当前工作目录（你设置的 /src）。\n",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T11:07:14.550Z",
+      "updatedAt": "2026-09-08T11:07:14.550Z"
+    },
+    "line:9": {
+      "line": 9,
+      "anchorText": "RUN dotnet publish \"src/TerraVoice.Api/TerraVoice.Api.csproj\" -c Release -o /app/publish /p:UseAppHost=false",
+      "userNote": "在容器里编译你的项目并生成可运行的发布产物，输出到 /app/publish。\n\n1. -c Release. 生成 Release 版本 (-c: configure)\n2. -o /app/publish. 把发布产物放到容器内部的 /app/publish。(-o: output)\n3. /p:UseAppHost=false. 不要生成平台专属的可执行文件（如 TerraVoice.Api.exe）。只生成跨平台的 DLL（TerraVoice.Api.dll）",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T11:07:43.484Z",
+      "updatedAt": "2026-09-08T11:10:11.802Z"
+    },
+    "line:14": {
+      "line": 14,
+      "anchorText": "FROM mcr.microsoft.com/dotnet/aspnet:10.0",
+      "userNote": "使用轻量级 ASP.NET Core Runtime 镜像作为最终运行环境，只包含运行所需组件而不含 SDK。\n",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T11:13:51.136Z",
+      "updatedAt": "2026-09-08T11:13:51.136Z"
+    },
+    "line:15": {
+      "line": 15,
+      "anchorText": "WORKDIR /app",
+      "userNote": "将容器的当前工作目录设为 /app，后续所有相对路径操作都从这里开始。\n",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T11:14:00.902Z",
+      "updatedAt": "2026-09-08T11:14:00.902Z"
+    },
+    "line:16": {
+      "line": 16,
+      "anchorText": "COPY --from=build /app/publish .",
+      "userNote": "从名为 build 的构建阶段复制发布产物到当前目录 /app，形成最终可运行的应用文件集。\n",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T11:14:07.633Z",
+      "updatedAt": "2026-09-08T11:14:07.633Z"
+    },
+    "line:17": {
+      "line": 17,
+      "anchorText": "ENV ASPNETCORE_URLS=http://+:8080",
+      "userNote": "设置 ASP.NET Core 在容器内监听 8080 端口并绑定到所有网络接口。\n",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T11:14:23.558Z",
+      "updatedAt": "2026-09-08T11:14:23.558Z"
+    },
+    "line:18": {
+      "line": 18,
+      "anchorText": "EXPOSE 8080",
+      "userNote": "声明容器对外暴露 8080 端口，方便运行时或编排系统映射端口。\n",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T11:14:39.699Z",
+      "updatedAt": "2026-09-08T11:14:39.699Z"
+    },
+    "line:19": {
+      "line": 19,
+      "anchorText": "ENTRYPOINT [\"dotnet\", \"TerraVoice.Api.dll\"]",
+      "userNote": "指定容器启动时执行 dotnet TerraVoice.Api.dll，作为应用的主进程入口。\n",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T11:14:53.110Z",
+      "updatedAt": "2026-09-08T11:14:53.110Z"
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "source": {
+    "sourceHash": "sha256:434e055fd48abfd832ddfa8ff4042e9dbb7c70f8c776f4f9f388a9cf418b3652",
+    "sourceHashKind": "text",
+    "programmingLanguage": "dockercompose"
+  },
+  "defaults": {
+    "createdAt": "2026-08-28T07:49:05.313Z",
+    "updatedAt": "2026-09-08T12:57:55.970Z"
+  },
+  "fileNote": {
+    "userNote": "这个 docker-compose.yml 的核心作用是：\n告诉 Docker：TerraVoice API 这个 Container 用哪个 Image、怎么启动、读哪些环境变量、映射哪个端口、把数据保存到哪个 Volume。\n\n\n整体结构：\n\ndocker-compose.yml\n│\n├── services\n│   └── api                ← 定义你的后端 Container\n│\n└── volumes\n    └── terravoice-data    ← 定义持久化数据 Volume\n\n\n\nrestart: unless-stopped\n        ↓\nVPS/Container 意外重启 → 自动恢复",
+    "createdBy": "user",
+    "updatedAt": "2026-09-08T13:07:37.818Z"
+  },
+  "sectionNotes": {
+    "section:user:10-11": {
+      "title": "",
+      "range": {
+        "startLine": 10,
+        "endLine": 11
+      },
+      "anchorHash": "sha256:d8795e94ad7aae58e55b718174cd3a7e82628b8cf3f96e09bd1185aea03fba38",
+      "userNote": "services:\n  api:\n\n定义一个服务，名字叫 \"api\"",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T11:44:35.179Z",
+      "updatedAt": "2026-09-08T13:08:21.431Z"
+    },
+    "section:user:12-14": {
+      "title": "",
+      "range": {
+        "startLine": 12,
+        "endLine": 14
+      },
+      "anchorHash": "sha256:3f242f4120970d542a216f20045e3321b4e3736a28ffbfd547f9dea5259f9a8e",
+      "userNote": "build:\n\n本地直接 docker compose up --build 就能完成 build Image + 创建/更新 Container + 挂 Volume + 启动服务。\n\n不用先 docker build",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T13:07:02.349Z",
+      "updatedAt": "2026-09-08T13:07:34.572Z"
+    },
+    "section:user:15-16": {
+      "title": "",
+      "range": {
+        "startLine": 18,
+        "endLine": 19
+      },
+      "anchorHash": "sha256:a6f40609da059cebc60002e8361d7a8bb3a215f081283fa988a5ddff3b9b3055",
+      "userNote": "表示把 .env 里的环境变量传给 Container 里面的程序。",
+      "createdBy": "user",
+      "createdAt": "2026-08-28T08:19:31.468Z"
+    },
+    "section:user:17-18": {
+      "title": "",
+      "range": {
+        "startLine": 20,
+        "endLine": 21
+      },
+      "anchorHash": "sha256:2291ba363d30e575271de00b40904984df8e3f5485a39c58aa0277e11e6bf501",
+      "userNote": "宿主机端口 : Container 端口\n\n\n默认：\n\n8080 : 8080\n ↑       ↑\nVPS    Container\n\n\n如果 env 中：API_BIND_PORT=5059\n就变成 5059:8080，\n\n外部请求\n    ↓\nVPS:5059\n    ↓\nContainer:8080\n    ↓\nTerraVoice API\n",
+      "createdBy": "user",
+      "createdAt": "2026-08-28T08:14:42.289Z"
+    },
+    "section:user:19-20": {
+      "title": "",
+      "range": {
+        "startLine": 22,
+        "endLine": 23
+      },
+      "anchorHash": "sha256:c0f40d367d6c40eac7169a99bce86881d562fec0f25086673050a2e8cf2f36f1",
+      "userNote": "连接到 Docker 的持久化 Volume\n\n\nDocker Named Volume: Container里面的目录 （即 volume 挂载到该目录)\n    ↑                    ↑ \nterravoice-data       /app/Data  \n\n\n☘️ 假设 TerraVoice SQLite 是 /app/Data/usage.db\n实际上它的数据被持久化到：terravoice-data\n\n🔥 Volume 不在 Container 里面，只是“挂载到 Container 的某个目录”\n\nContainer\n└── /app/Data   ← 入口 / 挂载点\n        ↓\nDocker Volume\n└── terravoice-data   ← 真正存数据\n\n\n/app/Data 看起来在 Container 里，但实际上它已经被 Volume“接管”了，真正数据存在 Container 外部 (不做底层运维的话外部目录通常不用自己管，更省心)",
+      "createdBy": "user",
+      "createdAt": "2026-08-28T08:18:54.419Z"
+    },
+    "section:user:22-24": {
+      "title": "",
+      "range": {
+        "startLine": 26,
+        "endLine": 27
+      },
+      "anchorHash": "sha256:605f578649d4627f8beab9915a19c87f94c9be798c4f368f21a102c98a1b10c6",
+      "userNote": "正式声明：\n\n我要一个叫 terravoice-data 的 Docker Volume。\n\n如果没有这一行：name: terravoice-data，Compose 可能自动生成：terravoice_terravoice-data",
+      "createdBy": "user",
+      "createdAt": "2026-08-28T08:00:39.525Z"
+    }
+  },
+  "lineNotes": {
+    "line:10": {
+      "line": 10,
+      "anchorText": "services:",
+      "userNote": "表示下面开始定义要运行的服务/Container。(现在只有一个)",
+      "createdBy": "user",
+      "createdAt": "2026-08-28T07:50:20.128Z",
+      "updatedAt": "2026-08-28T07:50:20.128Z"
+    },
+    "line:11": {
+      "line": 11,
+      "anchorText": "  api:",
+      "userNote": "api 是 Compose 里面给这个服务起的名字\n\n可以理解：\n\nservices\n└── api\n    └── TerraVoice 后端",
+      "createdBy": "user",
+      "createdAt": "2026-08-28T07:50:56.458Z",
+      "updatedAt": "2026-09-08T13:08:10.549Z"
+    },
+    "line:12:note:1": {
+      "line": 12,
+      "anchorText": "    build:",
+      "userNote": "定义这个 api 服务的 Docker Image 要如何构建",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T13:05:38.171Z",
+      "updatedAt": "2026-09-08T13:05:38.171Z"
+    },
+    "line:13:note:1": {
+      "line": 13,
+      "anchorText": "      context: .",
+      "userNote": "构建上下文是当前项目根目录 terra-voice/",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T13:05:48.708Z",
+      "updatedAt": "2026-09-08T13:05:48.708Z"
+    },
+    "line:14:note:1": {
+      "line": 14,
+      "anchorText": "      dockerfile: Dockerfile",
+      "userNote": "使用这个具体路径下的 Dockerfile 作为构建说明",
+      "createdBy": "user",
+      "createdAt": "2026-09-08T13:06:03.166Z",
+      "updatedAt": "2026-09-08T13:06:03.166Z"
+    },
+    "line:12": {
+      "line": 15,
+      "anchorText": "    image: ghcr.io/${GITHUB_REPOSITORY_OWNER:-local}/terravoice-api:${IMAGE_TAG:-latest}",
+      "userNote": "指定：这个 Container 使用哪个 Docker Image。\n\nghcr.io/\n│\n├── leo7805\n│   └── terravoice-api\n│       └── :latest\n│\nRegistry   Owner       Image       Version\n\n\nghcr.io\n= GitHub Container Registry\n= GitHub 存 Docker Image 的地方\n\n\n${GITHUB_REPOSITORY_OWNER:-local}\n如果 GITHUB_REPOSITORY_OWNER 有值→ 使用它\n否则→ 使用 local\n\n${IMAGE_TAG:-latest}\n有 IMAGE_TAG → 用指定版本\n没有         → latest\n\n☘️ 示例\nGITHUB_REPOSITORY_OWNER=Leo7805\nIMAGE_TAG=v1.2.0\n\n最终变成：ghcr.io/Leo7805/terravoice-api:v1.2.0",
+      "createdBy": "user",
+      "createdAt": "2026-08-28T07:51:24.849Z",
+      "updatedAt": "2026-09-08T13:08:01.699Z"
+    },
+    "line:13": {
+      "line": 16,
+      "anchorText": "    container_name: terravoice-api",
+      "userNote": "Container 启动以后叫：terravoice-api\n\n例如，以后可使用:\ndocker logs terravoice-api\ndocker stop terravoice-api",
+      "createdBy": "user",
+      "createdAt": "2026-08-28T07:54:13.070Z"
+    },
+    "line:14": {
+      "line": 17,
+      "anchorText": "    restart: unless-stopped",
+      "userNote": "Container 崩了、Docker 重启了、VPS 重启了，都自动重新启动它。\n\n但如果是你主动手动 stop 的，就保持停止。",
+      "createdBy": "user",
+      "createdAt": "2026-08-28T07:56:23.957Z"
+    }
+  }
+}

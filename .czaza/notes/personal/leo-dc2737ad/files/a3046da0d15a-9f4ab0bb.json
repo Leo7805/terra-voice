@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:5783167f148193d4393faac2d1f33ed520b7b5084270c097a6dd1a243fc1a091",
+    "sourceHashKind": "text",
+    "programmingLanguage": "dotenv"
+  },
+  "defaults": {
+    "createdAt": "2026-08-29T12:30:15.574Z",
+    "updatedAt": "2026-08-29T12:30:15.574Z"
+  },
+  "fileNote": {
+    "userNote": "告诉别人这个项目需要哪些环境变量，但只放示例、不放真正的密码或 API Key。（这里主要给 docker 环境用的)",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

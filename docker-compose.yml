@@ -1,0 +1,27 @@
+# docker-compose.yml
+#
+# Single-service definition for the TerraVoice.Api backend.
+# Same file works for both local dev (`docker compose up --build`) and the VPS
+# deploy (CI pushes an image; then `docker compose pull && docker compose up -d`).
+#
+# Override `IMAGE_TAG` and `GITHUB_REPOSITORY_OWNER` at deploy time (CI sets them).
+# Override `API_BIND_PORT` if you don't want the API on host port 8080.
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ghcr.io/${GITHUB_REPOSITORY_OWNER:-local}/terravoice-api:${IMAGE_TAG:-latest}
+    container_name: terravoice-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "${API_BIND_PORT:-8080}:8080"
+    volumes:
+      - terravoice-data:/app/Data
+
+volumes:
+  terravoice-data:
+    name: terravoice-data

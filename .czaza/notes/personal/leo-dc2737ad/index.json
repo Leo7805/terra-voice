@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 2,
+  "updatedAt": "2026-09-08T12:57:55.970Z",
+  "workspaceRoot": "/Users/leo/Projects/terra-voice",
+  "files": {
+    ".dockerignore": {
+      "noteFile": "files/2f754321d62f-c82132f1.json",
+      "sourceHash": "sha256:3416a2145c2ae8ef68dec2e942b4f8d94ac7b792acd1a0bd9e08876178865f51",
+      "programmingLanguage": "ignore",
+      "updatedAt": "2026-08-28T03:49:02.561Z"
+    },
+    "src/TerraVoice.Api/Dockerfile": {
+      "noteFile": "files/c42ac8436c91-421f93a6.json",
+      "sourceHash": "sha256:aff26c6a32554a7376cae47483627534ab259c1e8355e9ada79bed480a1c67e0",
+      "programmingLanguage": "dockerfile",
+      "updatedAt": "2026-09-08T10:51:43.810Z"
+    },
+    "docker-compose.yml": {
+      "noteFile": "files/e45e45baeda1-a023824a.json",
+      "sourceHash": "sha256:434e055fd48abfd832ddfa8ff4042e9dbb7c70f8c776f4f9f388a9cf418b3652",
+      "programmingLanguage": "dockercompose",
+      "updatedAt": "2026-09-08T12:57:55.970Z"
+    },
+    "docs/plans/roadmap.md": {
+      "noteFile": "files/379406216760-0043d6ac.json",
+      "sourceHash": "sha256:849bb39d0801dc236481b30013cffa38dbbae9fe00258aa554ca94e365a82f11",
+      "programmingLanguage": "markdown",
+      "updatedAt": "2026-08-29T13:11:10.539Z"
+    },
+    ".editorconfig": {
+      "noteFile": "files/0947e2727d6b-6ddf3ab5.json",
+      "sourceHash": "sha256:8bd33a676137a3feb297df454ef80adc6c00229898ff7d45cf4638d5043a7fa6",
+      "programmingLanguage": "properties",
+      "updatedAt": "2026-08-29T12:29:46.996Z"
+    },
+    ".env.example": {
+      "noteFile": "files/a3046da0d15a-9f4ab0bb.json",
+      "sourceHash": "sha256:5783167f148193d4393faac2d1f33ed520b7b5084270c097a6dd1a243fc1a091",
+      "programmingLanguage": "dotenv",
+      "updatedAt": "2026-08-29T12:30:15.574Z"
+    },
+    ".env": {
+      "noteFile": "files/e9cbb0224c4a-627fae4c.json",
+      "sourceHash": "sha256:e80d28345bfea6f911fa7053f9b463a9432666cef0b39b0bccdf2e89224afdb9",
+      "programmingLanguage": "dotenv",
+      "updatedAt": "2026-08-29T13:12:11.851Z"
+    }
+  }
+}

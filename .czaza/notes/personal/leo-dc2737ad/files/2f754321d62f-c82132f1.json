@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:3416a2145c2ae8ef68dec2e942b4f8d94ac7b792acd1a0bd9e08876178865f51",
+    "sourceHashKind": "text",
+    "programmingLanguage": "ignore"
+  },
+  "defaults": {
+    "createdAt": "2026-08-28T03:04:57.070Z",
+    "updatedAt": "2026-08-29T12:27:56.914Z"
+  },
+  "fileNote": {
+    "userNote": "Keeps playground/node_modules, .git, IDE caches, bin/obj, Bicep, and tests/ out of the Docker build context.",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}
