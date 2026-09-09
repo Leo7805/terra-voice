@@ -1,6 +1,6 @@
 {
   "source": {
-    "sourceHash": "sha256:320a3632618dc8b1e03f2bfca36ef8a703afd1bd3095cbac9d63ae17d2bae445",
+    "sourceHash": "sha256:5e13fb4abf168935cceaed6cd86e8fb2fbac0e0909462adc5a6b144b9b81a72d",
     "sourceHashKind": "text",
     "programmingLanguage": "github-actions-workflow"
   },
@@ -11,7 +11,11 @@
   "fileNote": {
     "userNote": "backend.yml 就是一个 GitHub Actions Workflow 文件\n\n(任何放在 .github/workflows/ 目录下的 .yml 文件，都叫 GitHub Actions Workflow。)\n\n⚠️ push 到 main 会自动触发 GitHub Actions，然后读取并执行这个 workflow 文件\n\nGitHub Actions：编译代码 → 构建并上传 Docker Image 到 GHCR → 手动触发时 SSH 到 VPS 拉取最新镜像并重启服务。",
     "createdBy": "user",
-    "updatedAt": "2026-09-09T13:01:05.909Z"
+    "status": {
+      "content": "stale",
+      "anchor": "confirmed"
+    },
+    "updatedAt": "2026-09-09T13:04:31.738Z"
   },
   "sectionNotes": {
     "section:user:10-12": {
@@ -32,11 +36,11 @@
         "startLine": 15,
         "endLine": 51
       },
-      "anchorHash": "sha256:09b22e3fafd39944f142a97772a2627bdff1dea752543c186ed0dbeb12a13847",
+      "anchorHash": "sha256:73a56348d50f20ee8f56b6817751c05bd5890747facbb982cc2461975446122c",
       "userNote": "build（CI: 构建 & 推镜像）",
       "createdBy": "user",
       "createdAt": "2026-09-09T10:37:32.046Z",
-      "updatedAt": "2026-09-09T13:01:31.434Z"
+      "updatedAt": "2026-09-09T13:05:33.442Z"
     },
     "section:user:13-42": {
       "title": "",
@@ -44,11 +48,11 @@
         "startLine": 17,
         "endLine": 51
       },
-      "anchorHash": "sha256:19167c01f68c0cc660a8c3939b828fbd5feb6ce8d2a32b39562676b640e97911",
+      "anchorHash": "sha256:48d3f38095c9ace16650a942e6f6229ad193a0fa22ace07714612705b088964c",
       "userNote": "这个 job 的步骤列表。\n\n👉 在 GitHub Actions 的语法里，每一个 - 就代表一个独立的 step（步骤）。这是 YAML 的列表语法，而 GitHub Actions 把这个列表解释为“按顺序执行的步骤”",
       "createdBy": "user",
       "createdAt": "2026-09-09T10:47:29.017Z",
-      "updatedAt": "2026-09-09T13:01:31.431Z"
+      "updatedAt": "2026-09-09T13:05:33.439Z"
     },
     "section:user:18-19": {
       "title": "",
@@ -89,10 +93,11 @@
         "startLine": 31,
         "endLine": 37
       },
-      "anchorHash": "sha256:568c1e90c03bcc2a60a84a2e411b6b82e381891b23805a5cd02a18568a00810c",
+      "anchorHash": "sha256:3159322fba7f7c7e31fea403f1fe3b7c063644e54499125977f2f2fdcd35cd01",
       "userNote": "这段代码的作用是：在不是 PR 的情况下，用你的 GitHub 身份登录 GHCR，让后面可以推 Docker 镜像。\n\n👉 它用 docker/login-action 帮你执行 docker login ghcr.io，用的是 GitHub 自动提供的 GITHUB_TOKEN。",
       "createdBy": "user",
-      "createdAt": "2026-09-09T11:04:25.177Z"
+      "createdAt": "2026-09-09T11:04:25.177Z",
+      "updatedAt": "2026-09-09T13:05:33.436Z"
     },
     "section:user:30-33": {
       "title": "",
@@ -122,11 +127,11 @@
         "startLine": 42,
         "endLine": 51
       },
-      "anchorHash": "sha256:a97e41eb34751283fa072d63f0f10cbb7b8c5c260f128c5cdec9e77b6ea4f857",
+      "anchorHash": "sha256:87e39f0c9e87855f43629ca7194e96b9a6da30dbc1e1f7c82cb6e3e74da208e4",
       "userNote": "构建并推送 Docker 镜像。",
       "createdBy": "user",
       "createdAt": "2026-09-09T11:07:10.377Z",
-      "updatedAt": "2026-09-09T13:01:31.427Z"
+      "updatedAt": "2026-09-09T13:05:33.433Z"
     },
     "section:user:38-42": {
       "title": "",
@@ -315,14 +320,24 @@
       "anchorText": "        if: github.event_name != 'pull_request'",
       "userNote": "条件执行：只有在不是 pull_request 事件时才执行（即 push 或手动触发）。\nPR 构建只做 CI，不推镜像。",
       "createdBy": "user",
-      "createdAt": "2026-09-09T11:04:55.729Z"
+      "status": {
+        "content": "stale",
+        "anchor": "confirmed"
+      },
+      "createdAt": "2026-09-09T11:04:55.729Z",
+      "updatedAt": "2026-09-09T13:05:07.493Z"
     },
     "line:29": {
       "line": 33,
       "anchorText": "        uses: docker/login-action@v3",
       "userNote": "使用官方 Docker 登录 action。",
       "createdBy": "user",
-      "createdAt": "2026-09-09T11:05:09.404Z"
+      "status": {
+        "content": "stale",
+        "anchor": "confirmed"
+      },
+      "createdAt": "2026-09-09T11:05:09.404Z",
+      "updatedAt": "2026-09-09T13:05:09.757Z"
     },
     "line:36:note:1": {
       "line": 40,
@@ -343,8 +358,12 @@
       "anchorText": "        uses: docker/build-push-action@v6",
       "userNote": "使用官方 Docker build/push action。\n\n",
       "createdBy": "user",
+      "status": {
+        "content": "stale",
+        "anchor": "confirmed"
+      },
       "createdAt": "2026-09-09T11:07:39.369Z",
-      "updatedAt": "2026-09-09T12:54:59.354Z"
+      "updatedAt": "2026-09-09T13:05:19.912Z"
     },
     "line:45": {
       "line": 54,
