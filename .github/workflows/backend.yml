@@ -7,14 +7,18 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: '10.0.x'
 
@@ -37,12 +41,14 @@ jobs:
 
       - name: Build & push Docker image
         if: github.event_name != 'pull_request'
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: src/TerraVoice.Api/Dockerfile
           push: true
-          tags: ghcr.io/${{ env.OWNER_LC }}/terravoice-api:${{ github.sha }}
+          tags: |
+            ghcr.io/${{ env.OWNER_LC }}/terravoice-api:${{ github.sha }}
+            ghcr.io/${{ env.OWNER_LC }}/terravoice-api:latest
 
   deploy:
     needs: build
