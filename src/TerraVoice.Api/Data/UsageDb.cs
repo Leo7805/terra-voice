@@ -47,6 +47,29 @@ public sealed class UsageDb
         await command.ExecuteNonQueryAsync();
     }
 
+    /// <summary>
+    /// Checks whether the SQLite database is reachable and able to execute a simple query.
+    /// </summary>
+    /// <returns>
+    /// <c>true</c> if the database connection is successfully opened and the test query completes; otherwise, <c>false</c>.
+    /// </returns>
+    public async Task<bool> IsReadyAsync()
+    {
+        try
+        {
+            await using var conn = new Microsoft.Data.Sqlite.SqliteConnection(_connectionString);
+            await conn.OpenAsync();
+            await using var cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT 1;";
+            var result = await cmd.ExecuteScalarAsync();
+            return result is not null;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
     public async Task RecordAsync(string provider, string month, int charCount)
     {
         await using var connection = new SqliteConnection(_connectionString);

@@ -1,12 +1,12 @@
 {
   "source": {
-    "sourceHash": "sha256:e80d28345bfea6f911fa7053f9b463a9432666cef0b39b0bccdf2e89224afdb9",
+    "sourceHash": "sha256:18af8aa6ca83333d1b5306872e4790891b47f37a7da9514890d71e9a0e16719b",
     "sourceHashKind": "text",
     "programmingLanguage": "dotenv"
   },
   "defaults": {
     "createdAt": "2026-08-29T12:36:06.707Z",
-    "updatedAt": "2026-08-29T13:11:02.522Z"
+    "updatedAt": "2026-09-09T05:59:55.733Z"
   },
   "fileNote": {
     "userNote": ".env 不是 .NET 必须的，也不是 VPS 必须的；它只是 Docker Compose/VPS 场景下管理环境变量的一种简单方便的方法。\n\n\n☘️ .NET 开发时，你可能用过：\n\nappsettings.json\nappsettings.Development.json\nlaunchSettings.json\nUser Secrets\nIDE 里设置 Environment Variables\n\n例如 Visual Studio / Rider 可以直接给程序设置：\n\nAzureSpeech__Key=xxxxx\nAzureSpeech__Region=australiaeast\n\n所以你不需要 .env 文件，程序照样能读取环境变量。\n\n\n",

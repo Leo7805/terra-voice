@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-08T12:57:55.970Z",
+  "updatedAt": "2026-09-09T12:09:55.344Z",
   "workspaceRoot": "/Users/leo/Projects/terra-voice",
   "files": {
     ".dockerignore": {
@@ -11,21 +11,21 @@
     },
     "src/TerraVoice.Api/Dockerfile": {
       "noteFile": "files/c42ac8436c91-421f93a6.json",
-      "sourceHash": "sha256:aff26c6a32554a7376cae47483627534ab259c1e8355e9ada79bed480a1c67e0",
+      "sourceHash": "sha256:04f0fe1ff343bbed17e33912b2a9dbcb191104c5814e7824af39ae88b58fe0e7",
       "programmingLanguage": "dockerfile",
-      "updatedAt": "2026-09-08T10:51:43.810Z"
+      "updatedAt": "2026-09-09T05:59:46.657Z"
     },
     "docker-compose.yml": {
       "noteFile": "files/e45e45baeda1-a023824a.json",
-      "sourceHash": "sha256:434e055fd48abfd832ddfa8ff4042e9dbb7c70f8c776f4f9f388a9cf418b3652",
+      "sourceHash": "sha256:d7b0fc43d9908acae9daeaf0223caa755b9b7273e2aaf8db38eef214fc1321b2",
       "programmingLanguage": "dockercompose",
-      "updatedAt": "2026-09-08T12:57:55.970Z"
+      "updatedAt": "2026-09-09T06:00:02.454Z"
     },
     "docs/plans/roadmap.md": {
       "noteFile": "files/379406216760-0043d6ac.json",
-      "sourceHash": "sha256:849bb39d0801dc236481b30013cffa38dbbae9fe00258aa554ca94e365a82f11",
+      "sourceHash": "sha256:d2b4cbf123b6cbf8de02aeea26c69f5922b414f0e8dfe8b531825435b050f42d",
       "programmingLanguage": "markdown",
-      "updatedAt": "2026-08-29T13:11:10.539Z"
+      "updatedAt": "2026-09-09T12:09:55.344Z"
     },
     ".editorconfig": {
       "noteFile": "files/0947e2727d6b-6ddf3ab5.json",
@@ -41,9 +41,33 @@
     },
     ".env": {
       "noteFile": "files/e9cbb0224c4a-627fae4c.json",
-      "sourceHash": "sha256:e80d28345bfea6f911fa7053f9b463a9432666cef0b39b0bccdf2e89224afdb9",
+      "sourceHash": "sha256:18af8aa6ca83333d1b5306872e4790891b47f37a7da9514890d71e9a0e16719b",
       "programmingLanguage": "dotenv",
-      "updatedAt": "2026-08-29T13:12:11.851Z"
+      "updatedAt": "2026-09-09T02:24:48.064Z"
+    },
+    "src/TerraVoice.Api/Data/UsageDb.cs": {
+      "noteFile": "files/83ae6ec72746-4f276be9.json",
+      "sourceHash": "sha256:fa453c19772d11af61e01156872a905471cd05f0af98ccc2069503af8716b8a2",
+      "programmingLanguage": "csharp",
+      "updatedAt": "2026-09-09T05:14:47.162Z"
+    },
+    "src/TerraVoice.Api/Program.cs": {
+      "noteFile": "files/a15438de0ffc-62588550.json",
+      "sourceHash": "sha256:e543c7901b2ccd2396aedeb89c212de09d0a323bfbb696747f4be0fba7daee77",
+      "programmingLanguage": "csharp",
+      "updatedAt": "2026-09-09T05:59:26.242Z"
+    },
+    "src/TerraVoice.Api/Endpoints/HealthEndpoints.cs": {
+      "noteFile": "files/00f448899172-9d2c0dc9.json",
+      "sourceHash": "sha256:57363be44634ec92ac2f66e67d68eacbc763e3486da0497881cf7db3d840a44a",
+      "programmingLanguage": "csharp",
+      "updatedAt": "2026-09-09T06:05:46.147Z"
+    },
+    ".github/workflows/backend.yml": {
+      "noteFile": "files/4221e7060cb5-352c384a.json",
+      "sourceHash": "sha256:93147f17cccc1b345dc868da85e150fa4d49823905abe6de666e5acf14310db1",
+      "programmingLanguage": "github-actions-workflow",
+      "updatedAt": "2026-09-09T11:03:19.412Z"
     }
   }
 }

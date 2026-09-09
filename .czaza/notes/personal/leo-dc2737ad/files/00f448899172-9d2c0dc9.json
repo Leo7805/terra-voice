@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:57363be44634ec92ac2f66e67d68eacbc763e3486da0497881cf7db3d840a44a",
+    "sourceHashKind": "text",
+    "programmingLanguage": "csharp"
+  },
+  "defaults": {
+    "createdAt": "2026-09-09T06:05:46.147Z",
+    "updatedAt": "2026-09-09T06:05:46.147Z"
+  },
+  "fileNote": {
+    "userNote": "这段代码为应用提供 /health/live 和 /health/ready 两个健康检查接口，用来告诉外部系统：进程是否存活、数据库是否可用。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

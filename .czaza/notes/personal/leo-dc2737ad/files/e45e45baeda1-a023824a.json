@@ -1,6 +1,6 @@
 {
   "source": {
-    "sourceHash": "sha256:434e055fd48abfd832ddfa8ff4042e9dbb7c70f8c776f4f9f388a9cf418b3652",
+    "sourceHash": "sha256:d7b0fc43d9908acae9daeaf0223caa755b9b7273e2aaf8db38eef214fc1321b2",
     "sourceHashKind": "text",
     "programmingLanguage": "dockercompose"
   },
@@ -74,13 +74,14 @@
     "section:user:22-24": {
       "title": "",
       "range": {
-        "startLine": 26,
-        "endLine": 27
+        "startLine": 31,
+        "endLine": 33
       },
-      "anchorHash": "sha256:605f578649d4627f8beab9915a19c87f94c9be798c4f368f21a102c98a1b10c6",
+      "anchorHash": "sha256:f0bc3515ff24e5bec5dd600d2837c6cbc7d838d5c9e1ba713743abe1a8330b3a",
       "userNote": "正式声明：\n\n我要一个叫 terravoice-data 的 Docker Volume。\n\n如果没有这一行：name: terravoice-data，Compose 可能自动生成：terravoice_terravoice-data",
       "createdBy": "user",
-      "createdAt": "2026-08-28T08:00:39.525Z"
+      "createdAt": "2026-08-28T08:00:39.525Z",
+      "updatedAt": "2026-09-09T06:30:23.148Z"
     }
   },
   "lineNotes": {
@@ -127,10 +128,10 @@
     "line:12": {
       "line": 15,
       "anchorText": "    image: ghcr.io/${GITHUB_REPOSITORY_OWNER:-local}/terravoice-api:${IMAGE_TAG:-latest}",
-      "userNote": "指定：这个 Container 使用哪个 Docker Image。\n\nghcr.io/\n│\n├── leo7805\n│   └── terravoice-api\n│       └── :latest\n│\nRegistry   Owner       Image       Version\n\n\nghcr.io\n= GitHub Container Registry\n= GitHub 存 Docker Image 的地方\n\n\n${GITHUB_REPOSITORY_OWNER:-local}\n如果 GITHUB_REPOSITORY_OWNER 有值→ 使用它\n否则→ 使用 local\n\n${IMAGE_TAG:-latest}\n有 IMAGE_TAG → 用指定版本\n没有         → latest\n\n☘️ 示例\nGITHUB_REPOSITORY_OWNER=Leo7805\nIMAGE_TAG=v1.2.0\n\n最终变成：ghcr.io/Leo7805/terravoice-api:v1.2.0",
+      "userNote": "指定：这个 Container 使用哪个 Docker Image。\n\nghcr.io/\n│\n├── leo7805\n│   └── terravoice-api\n│       └── :latest\n│\nRegistry   Owner       Image       Version\n\n\nghcr.io\n= GitHub Container Registry\n= GitHub 存 Docker Image 的地方\n\n\n${GITHUB_REPOSITORY_OWNER:-local}\n如果 GITHUB_REPOSITORY_OWNER 有值→ 使用它\n否则→ 使用 local\n\n${IMAGE_TAG:-latest}\n有 IMAGE_TAG → 用指定版本\n没有         → latest\n\n☘️ 示例\nGITHUB_REPOSITORY_OWNER=Leo7805\nIMAGE_TAG=v1.2.0\n\n最终变成：ghcr.io/Leo7805/terravoice-api:v1.2.0\n\n\n🔥 Image 名称 = Registry + Owner + Image Name + Tag\n             ghcr.io    leo    terravoice-api  latest\n\n它虽然整体是镜像的名字，但这个名字本身就包含了仓库地址、所有者、镜像名和版本 Tag。\n- 如果你只在本地 build 和 run，ghcr.io/... 这部分基本没有实际作用，只是镜像名字的一部分。\n- 远程 push/pull: 镜像名里包含 Registry，可以让 push / pull 直接知道该去哪个远程仓库，不需要另外再传一个仓库地址参数。",
       "createdBy": "user",
       "createdAt": "2026-08-28T07:51:24.849Z",
-      "updatedAt": "2026-09-08T13:08:01.699Z"
+      "updatedAt": "2026-09-09T02:49:32.214Z"
     },
     "line:13": {
       "line": 16,

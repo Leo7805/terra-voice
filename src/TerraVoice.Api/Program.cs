@@ -56,5 +56,6 @@ app.MapGet("/", () => Results.Ok(new { message = "TerraVoice is running!" }));
 app.MapTtsEndpoints();
 
 app.MapUsageEndpoints();
+app.MapHealthEndpoints();
 
 app.Run();

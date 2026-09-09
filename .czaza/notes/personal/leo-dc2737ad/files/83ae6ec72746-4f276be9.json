@@ -1,0 +1,29 @@
+{
+  "source": {
+    "sourceHash": "sha256:fa453c19772d11af61e01156872a905471cd05f0af98ccc2069503af8716b8a2",
+    "programmingLanguage": "csharp"
+  },
+  "defaults": {
+    "createdAt": "2026-09-09T05:14:47.162Z",
+    "updatedAt": "2026-09-09T05:15:00.012Z"
+  },
+  "fileNote": {
+    "userNote": "IsReadyAsync() - 检查 SQLite 数据库是否可连接并能正常执行简单查询。",
+    "createdBy": "user",
+    "createdAt": "2026-09-09T05:15:00.012Z"
+  },
+  "sectionNotes": {
+    "section:user:56-71": {
+      "title": "",
+      "range": {
+        "startLine": 56,
+        "endLine": 71
+      },
+      "anchorHash": "sha256:87fcdee9d519f196f731b8aa5104f208ac223b14410a407f11860a077b1c4aab",
+      "userNote": "UsageDb 加最小可读探针。\n\n检查 SQLite 数据库是否可连接并能正常执行简单查询。",
+      "createdBy": "user",
+      "updatedAt": "2026-09-09T05:47:29.274Z"
+    }
+  },
+  "lineNotes": {}
+}

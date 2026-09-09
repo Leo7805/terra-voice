@@ -11,7 +11,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: src/TerraVoice.Api/Dockerfile
     image: ghcr.io/${GITHUB_REPOSITORY_OWNER:-local}/terravoice-api:${IMAGE_TAG:-latest}
     container_name: terravoice-api
     restart: unless-stopped
@@ -21,6 +21,12 @@ services:
       - "${API_BIND_PORT:-8080}:8080"
     volumes:
       - terravoice-data:/app/Data
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8080/health/live"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
 
 volumes:
   terravoice-data:

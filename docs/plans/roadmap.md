@@ -1,4 +1,5 @@
 # TerraVoice Roadmap
 
 - [x] 1. [TerraVoice — Restructure](01-restructure.md) (use docker)
-  - Status: Sections 1, 7.1, 7.2 done; Section 7.3 in progress (`.env.example` written).
+  - Status: Sections 1, 7.1, 7.2, 7.3, 7.4, 7.7 done. §7.4 (SQLite persistence) verified Sep 9: `usage.db` mtime unchanged across `docker compose down`/`up` cycles (named volume `terravoice-data` works). §7.7 verified earlier: `docker inspect` reports `healthy`; `/health/live` and `/health/ready` return 200. §7 simplified for the study project (target = your own Ubuntu VPS, not Azure): **Caddy** chosen as reverse proxy + HTTPS; **§7.8 rollback cut** (manual redeploy is enough for a single container).
+  - Next up: §7.4 (5-min SQLite persistence verify), then §7.9 (VPS init — you do on the VPS), §7.10 (manual deploy), §7.6 (Caddy), §7.11 (smoke test), §7.5 (GitHub Actions CI/CD). Your call on when to start the next batch.

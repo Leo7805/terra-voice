@@ -1,6 +1,6 @@
 {
   "source": {
-    "sourceHash": "sha256:aff26c6a32554a7376cae47483627534ab259c1e8355e9ada79bed480a1c67e0",
+    "sourceHash": "sha256:04f0fe1ff343bbed17e33912b2a9dbcb191104c5814e7824af39ae88b58fe0e7",
     "sourceHashKind": "text",
     "programmingLanguage": "dockerfile"
   },
@@ -30,13 +30,37 @@
       "title": "",
       "range": {
         "startLine": 11,
-        "endLine": 19
+        "endLine": 29
       },
-      "anchorHash": "sha256:7da564b31d12d51bb1fded91d4b9e57fbb563413230e5d1e8944f658934b4c0e",
+      "anchorHash": "sha256:af8a6f500743d63f162487d5008202b879fba61e4014e4763cf664770ac8bd83",
       "userNote": "这一段运行阶段使用轻量级 ASP.NET Core Runtime 镜像，将构建阶段生成的发布产物复制到 /app，配置容器监听 8080 端口，并通过 dotnet TerraVoice.Api.dll 启动最终的应用进程。",
       "createdBy": "user",
       "createdAt": "2026-09-08T11:13:15.416Z",
-      "updatedAt": "2026-09-08T11:13:15.416Z"
+      "updatedAt": "2026-09-09T06:01:01.656Z"
+    },
+    "section:user:18-20": {
+      "title": "",
+      "range": {
+        "startLine": 18,
+        "endLine": 20
+      },
+      "anchorHash": "sha256:db3e6825fc34d82521d4b5eaeec2ab7897b0d418329ef2f2e1703aa44d7e90ef",
+      "userNote": "这条 RUN 指令更新 apt 索引、安装 curl（不带推荐包），然后删除 apt 缓存目录以减小镜像体积。\n\n👉 会在镜像中安装 curl，供 Docker Engine 定期执行 HEALTHCHECK 请求 /health 接口；检查结果可通过 docker ps 查看\n",
+      "createdBy": "user",
+      "createdAt": "2026-09-09T06:04:29.898Z",
+      "updatedAt": "2026-09-09T06:11:03.927Z"
+    },
+    "section:user:26-27": {
+      "title": "",
+      "range": {
+        "startLine": 26,
+        "endLine": 27
+      },
+      "anchorHash": "sha256:fe32ed1d4cc7d5e51462fe594b92f001906bce228edd6a942859fffb1848aea8",
+      "userNote": "这条 HEALTHCHECK 指令每 30 秒用 curl 访问容器的 /health/live，若连续 3 次在 5 秒内失败，就判定容器不健康。",
+      "createdBy": "user",
+      "createdAt": "2026-09-09T06:03:43.249Z",
+      "updatedAt": "2026-09-09T06:03:43.249Z"
     }
   },
   "lineNotes": {
@@ -104,36 +128,36 @@
       "updatedAt": "2026-09-08T11:14:00.902Z"
     },
     "line:16": {
-      "line": 16,
+      "line": 22,
       "anchorText": "COPY --from=build /app/publish .",
       "userNote": "从名为 build 的构建阶段复制发布产物到当前目录 /app，形成最终可运行的应用文件集。\n",
       "createdBy": "user",
       "createdAt": "2026-09-08T11:14:07.633Z",
-      "updatedAt": "2026-09-08T11:14:07.633Z"
+      "updatedAt": "2026-09-09T06:02:17.335Z"
     },
     "line:17": {
-      "line": 17,
+      "line": 23,
       "anchorText": "ENV ASPNETCORE_URLS=http://+:8080",
       "userNote": "设置 ASP.NET Core 在容器内监听 8080 端口并绑定到所有网络接口。\n",
       "createdBy": "user",
       "createdAt": "2026-09-08T11:14:23.558Z",
-      "updatedAt": "2026-09-08T11:14:23.558Z"
+      "updatedAt": "2026-09-09T06:02:23.831Z"
     },
     "line:18": {
-      "line": 18,
+      "line": 24,
       "anchorText": "EXPOSE 8080",
       "userNote": "声明容器对外暴露 8080 端口，方便运行时或编排系统映射端口。\n",
       "createdBy": "user",
       "createdAt": "2026-09-08T11:14:39.699Z",
-      "updatedAt": "2026-09-08T11:14:39.699Z"
+      "updatedAt": "2026-09-09T06:02:31.534Z"
     },
     "line:19": {
-      "line": 19,
+      "line": 29,
       "anchorText": "ENTRYPOINT [\"dotnet\", \"TerraVoice.Api.dll\"]",
       "userNote": "指定容器启动时执行 dotnet TerraVoice.Api.dll，作为应用的主进程入口。\n",
       "createdBy": "user",
       "createdAt": "2026-09-08T11:14:53.110Z",
-      "updatedAt": "2026-09-08T11:14:53.110Z"
+      "updatedAt": "2026-09-09T06:02:52.913Z"
     }
   }
 }
