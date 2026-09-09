@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-09T12:09:55.344Z",
+  "updatedAt": "2026-09-09T12:38:01.879Z",
   "workspaceRoot": "/Users/leo/Projects/terra-voice",
   "files": {
     ".dockerignore": {
@@ -65,9 +65,9 @@
     },
     ".github/workflows/backend.yml": {
       "noteFile": "files/4221e7060cb5-352c384a.json",
-      "sourceHash": "sha256:93147f17cccc1b345dc868da85e150fa4d49823905abe6de666e5acf14310db1",
+      "sourceHash": "sha256:2ec6a06580587b4efa39923361f4d132a44bd07a0dadeec17683d71988c1387a",
       "programmingLanguage": "github-actions-workflow",
-      "updatedAt": "2026-09-09T11:03:19.412Z"
+      "updatedAt": "2026-09-09T12:38:01.879Z"
     }
   }
 }

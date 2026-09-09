@@ -32,6 +32,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set lowercase repository owner
+        run: echo "OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> "$GITHUB_ENV"
+
       - name: Build & push Docker image
         if: github.event_name != 'pull_request'
         uses: docker/build-push-action@v5
@@ -39,7 +42,7 @@ jobs:
           context: .
           file: src/TerraVoice.Api/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/terravoice-api:${{ github.sha }}
+          tags: ghcr.io/${{ env.OWNER_LC }}/terravoice-api:${{ github.sha }}
 
   deploy:
     needs: build
