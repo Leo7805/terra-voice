@@ -1,21 +1,17 @@
 {
   "source": {
-    "sourceHash": "sha256:5e13fb4abf168935cceaed6cd86e8fb2fbac0e0909462adc5a6b144b9b81a72d",
+    "sourceHash": "sha256:e963c911c2f3be8289fa147fc844669445053d4297a4d65587326c035d85ee77",
     "sourceHashKind": "text",
     "programmingLanguage": "github-actions-workflow"
   },
   "defaults": {
     "createdAt": "2026-09-09T08:12:40.111Z",
-    "updatedAt": "2026-09-09T12:49:46.122Z"
+    "updatedAt": "2026-09-09T10:28:19.055Z"
   },
   "fileNote": {
     "userNote": "backend.yml 就是一个 GitHub Actions Workflow 文件\n\n(任何放在 .github/workflows/ 目录下的 .yml 文件，都叫 GitHub Actions Workflow。)\n\n⚠️ push 到 main 会自动触发 GitHub Actions，然后读取并执行这个 workflow 文件\n\nGitHub Actions：编译代码 → 构建并上传 Docker Image 到 GHCR → 手动触发时 SSH 到 VPS 拉取最新镜像并重启服务。",
     "createdBy": "user",
-    "status": {
-      "content": "stale",
-      "anchor": "confirmed"
-    },
-    "updatedAt": "2026-09-09T13:04:31.738Z"
+    "updatedAt": "2026-09-11T02:33:52.406Z"
   },
   "sectionNotes": {
     "section:user:10-12": {
@@ -25,185 +21,190 @@
         "endLine": 12
       },
       "anchorHash": "sha256:b09b4c274ca5baea75b5220fbaf7a9e582067953a8ecec603a583a8efe6dfd53",
-      "userNote": "你的 workflow 要 checkout 代码，还要 docker push 到 GHCR；默认 GITHUB_TOKEN 权限可能不够，所以显式给它这两个权限。",
+      "userNote": "permissions:\n    你的 workflow 要 checkout 代码，还要 docker push 到 GHCR；默认 GITHUB_TOKEN 权限可能不够，所以显式给它这两个权限。",
       "createdBy": "user",
       "createdAt": "2026-09-09T12:50:31.853Z",
-      "updatedAt": "2026-09-09T12:50:31.853Z"
+      "updatedAt": "2026-09-11T02:21:17.510Z"
     },
     "section:user:11-43": {
       "title": "",
       "range": {
-        "startLine": 15,
-        "endLine": 51
+        "startLine": 16,
+        "endLine": 52
       },
       "anchorHash": "sha256:73a56348d50f20ee8f56b6817751c05bd5890747facbb982cc2461975446122c",
-      "userNote": "build（CI: 构建 & 推镜像）",
+      "userNote": "build:\n    CI: 构建 & 推镜像",
       "createdBy": "user",
       "createdAt": "2026-09-09T10:37:32.046Z",
-      "updatedAt": "2026-09-09T13:05:33.442Z"
+      "updatedAt": "2026-09-11T02:34:22.269Z"
     },
     "section:user:13-42": {
       "title": "",
       "range": {
-        "startLine": 17,
-        "endLine": 51
+        "startLine": 18,
+        "endLine": 52
       },
       "anchorHash": "sha256:48d3f38095c9ace16650a942e6f6229ad193a0fa22ace07714612705b088964c",
-      "userNote": "这个 job 的步骤列表。\n\n👉 在 GitHub Actions 的语法里，每一个 - 就代表一个独立的 step（步骤）。这是 YAML 的列表语法，而 GitHub Actions 把这个列表解释为“按顺序执行的步骤”",
+      "userNote": "steps:\n    这个 job 的步骤列表。\n\n👉 在 GitHub Actions 的语法里，每一个 - 就代表一个独立的 step（步骤）。这是 YAML 的列表语法，而 GitHub Actions 把这个列表解释为“按顺序执行的步骤”",
       "createdBy": "user",
       "createdAt": "2026-09-09T10:47:29.017Z",
-      "updatedAt": "2026-09-09T13:05:33.439Z"
+      "updatedAt": "2026-09-11T02:38:51.117Z"
     },
     "section:user:18-19": {
       "title": "",
       "range": {
-        "startLine": 22,
-        "endLine": 23
+        "startLine": 23,
+        "endLine": 24
       },
       "anchorHash": "sha256:87732d3f16ffce680256ef296490d7b98fb3f0bc1846e06a8fbd149a5e52902d",
-      "userNote": "with: 传入参数。\n\ndotnet-version: '10.0.x'  \n安装 .NET 10 的任意 patch 版本（例如 10.0.1、10.0.2）",
+      "userNote": "with: \n    用来给这个 Action 脚本传递参数\n\ndotnet-version: '10.0.x'  \n安装 .NET 10 的任意 patch 版本（例如 10.0.1、10.0.2）",
       "createdBy": "user",
-      "createdAt": "2026-09-09T10:49:49.503Z"
+      "createdAt": "2026-09-09T10:49:49.503Z",
+      "updatedAt": "2026-09-11T02:42:11.601Z"
     },
     "section:user:21-22": {
       "title": "",
       "range": {
-        "startLine": 25,
-        "endLine": 26
+        "startLine": 26,
+        "endLine": 27
       },
       "anchorHash": "sha256:6d83519c1a3974c8e068b31a35f0e7336ba5e9e99587d62eb023ffd73669abd2",
-      "userNote": "- name: Restore  \nNuGet 还原步骤。\n\nrun: dotnet restore TerraVoice.sln  \n对解决方案 TerraVoice.sln 执行 dotnet restore，还原所有项目依赖。",
+      "userNote": "- name: Restore  \n    NuGet 还原步骤。\n\nrun: dotnet restore TerraVoice.sln  \n    对解决方案 TerraVoice.sln 执行 dotnet restore，还原所有项目依赖。",
       "createdBy": "user",
-      "createdAt": "2026-09-09T11:02:16.267Z"
+      "createdAt": "2026-09-09T11:02:16.267Z",
+      "updatedAt": "2026-09-11T02:43:00.021Z"
     },
     "section:user:24-25": {
       "title": "",
       "range": {
-        "startLine": 28,
-        "endLine": 29
+        "startLine": 29,
+        "endLine": 30
       },
       "anchorHash": "sha256:96d7cc0f64fe3d0754f5fee2349e66fc9b011a4abcde83f00a74a45690c722fd",
-      "userNote": "- name: Build  \n编译步骤。\n\nrun: dotnet build TerraVoice.sln --no-restore -c Release  \n编译解决方案：\n\n--no-restore：不再重复还原，因为上一步已经还原过。\n\n-c Release：使用 Release 配置构建。",
+      "userNote": "- name: Build  \n    编译步骤。\n\nrun: dotnet build TerraVoice.sln --no-restore -c Release  \n    编译解决方案：\n        --no-restore：不再重复还原，因为上一步已经还原过。\n        -c Release：使用 Release 配置构建。",
       "createdBy": "user",
-      "createdAt": "2026-09-09T11:02:41.432Z"
+      "createdAt": "2026-09-09T11:02:41.432Z",
+      "updatedAt": "2026-09-11T02:43:50.071Z"
     },
     "section:user:27-33": {
       "title": "",
       "range": {
-        "startLine": 31,
-        "endLine": 37
+        "startLine": 32,
+        "endLine": 38
       },
       "anchorHash": "sha256:3159322fba7f7c7e31fea403f1fe3b7c063644e54499125977f2f2fdcd35cd01",
-      "userNote": "这段代码的作用是：在不是 PR 的情况下，用你的 GitHub 身份登录 GHCR，让后面可以推 Docker 镜像。\n\n👉 它用 docker/login-action 帮你执行 docker login ghcr.io，用的是 GitHub 自动提供的 GITHUB_TOKEN。",
+      "userNote": "- name: Log in to GHCR\n\n这段代码的作用是：在不是 PR 的情况下，用你的 GitHub 身份登录 GHCR，让后面可以推 Docker 镜像。\n\n👉 它用 docker/login-action 帮你执行 docker login ghcr.io，用的是 GitHub 自动提供的 GITHUB_TOKEN。",
       "createdBy": "user",
       "createdAt": "2026-09-09T11:04:25.177Z",
-      "updatedAt": "2026-09-09T13:05:33.436Z"
+      "updatedAt": "2026-09-11T02:44:31.422Z"
     },
     "section:user:30-33": {
       "title": "",
       "range": {
-        "startLine": 34,
-        "endLine": 37
+        "startLine": 35,
+        "endLine": 38
       },
       "anchorHash": "sha256:f404412e83c53b5654a6d2fcc2928006e9c1d15ba30288737f3461d61880a8bc",
       "userNote": "with:  \n登录参数：\n\nregistry: ghcr.io  \n指定登录的 registry 为 GHCR。\n\nusername: ${{ github.actor }}  \n使用当前触发工作流的 GitHub 用户名作为登录用户名。\n\npassword: ${{ secrets.GITHUB_TOKEN }}  \n使用 GitHub 自动提供的 GITHUB_TOKEN 作为密码，用于推镜像到 GHCR。\n\n\n👉 Registry = 镜像仓库（Docker 镜像存放的服务器地址）\n",
       "createdBy": "user",
-      "createdAt": "2026-09-09T11:05:50.890Z"
+      "createdAt": "2026-09-09T11:05:50.890Z",
+      "updatedAt": "2026-09-11T02:45:49.008Z"
     },
     "section:user:35-36": {
       "title": "",
       "range": {
-        "startLine": 39,
-        "endLine": 40
+        "startLine": 40,
+        "endLine": 41
       },
       "anchorHash": "sha256:1eb9e1a6705e9203a61eb0e346688f9fd182681715205159d9061f7c01842d96",
-      "userNote": "在 GitHub Actions 里先把 github.repository_owner 转成小写\n\n👉 GitHub 用户名可以有大写，但 Docker/GHCR 镜像 repository 名必须全小写。",
+      "userNote": "- name: Set lowercase repository owner\n    在 GitHub Actions 里先把 github.repository_owner 转成小写\n    \n👉 GitHub 用户名可以有大写，但 Docker/GHCR 镜像 repository 名必须全小写。",
       "createdBy": "user",
-      "createdAt": "2026-09-09T12:39:04.551Z"
+      "createdAt": "2026-09-09T12:39:04.551Z",
+      "updatedAt": "2026-09-11T02:47:53.777Z"
     },
     "section:user:35-42": {
       "title": "",
       "range": {
-        "startLine": 42,
-        "endLine": 51
+        "startLine": 43,
+        "endLine": 52
       },
       "anchorHash": "sha256:87e39f0c9e87855f43629ca7194e96b9a6da30dbc1e1f7c82cb6e3e74da208e4",
-      "userNote": "构建并推送 Docker 镜像。",
+      "userNote": "- name: Build & push Docker image\n    构建并推送 Docker 镜像。",
       "createdBy": "user",
       "createdAt": "2026-09-09T11:07:10.377Z",
-      "updatedAt": "2026-09-09T13:05:33.433Z"
+      "updatedAt": "2026-09-11T02:48:31.185Z"
     },
     "section:user:38-42": {
       "title": "",
       "range": {
-        "startLine": 45,
-        "endLine": 51
+        "startLine": 46,
+        "endLine": 52
       },
       "anchorHash": "sha256:2befa703a41778cea35f8ca2ba1362a278e282a92521292b7e6591cf2c9a313c",
-      "userNote": "with:  \n配置构建参数：\n\n👉 context: .  \nDocker build 的上下文为当前仓库根目录。\n\n👉 file: src/TerraVoice.Api/Dockerfile  \n指定 Dockerfile 路径为 src/TerraVoice.Api/Dockerfile。\n\n👉 push: true  \n构建完成后推送镜像到 registry。\n\n👉 tags: ghcr.io/${{ github.repository_owner }}/terravoice-api:${{ github.sha }}  \n镜像 tag：\n  registry：ghcr.io\n  namespace：${{ github.repository_owner }}（仓库所有者）\n  镜像名：terravoice-api\n  ☘️ tag：${{ github.sha }}（当前 commit 的 SHA，保证唯一性）",
+      "userNote": "with:  \n    配置构建参数：\n\n👉 context: .  \nDocker build 的上下文为当前仓库根目录。\n\n👉 file: src/TerraVoice.Api/Dockerfile  \n指定 Dockerfile 路径为 src/TerraVoice.Api/Dockerfile。\n\n👉 push: true  \n构建完成后推送镜像到 registry。\n\n👉 tags: ghcr.io/${{ github.repository_owner }}/terravoice-api:${{ github.sha }}  \n镜像 tag：\n  registry：ghcr.io\n  namespace：${{ github.repository_owner }}（仓库所有者）\n  镜像名：terravoice-api\n  ☘️ tag：${{ github.sha }}（当前 commit 的 SHA，保证唯一性）",
       "createdBy": "user",
       "createdAt": "2026-09-09T11:07:54.697Z",
-      "updatedAt": "2026-09-09T13:01:31.422Z"
+      "updatedAt": "2026-09-11T02:49:35.734Z"
     },
     "section:user:49-51": {
       "title": "",
       "range": {
-        "startLine": 49,
-        "endLine": 51
+        "startLine": 50,
+        "endLine": 52
       },
       "anchorHash": "sha256:5a9fa4938d412c33067110ddaa7c794e728391011bacd1b2a68cdb77f828e38e",
-      "userNote": "当前 VPS 上的 docker-compose.yml 默认是：\n\nimage: ghcr.io/${GITHUB_REPOSITORY_OWNER:-local}/terravoice-api:${IMAGE_TAG:-latest}\n\n也就是说 VPS 如果没设置 IMAGE_TAG，会去拉 latest，所以这里同时 push 两个 tag",
+      "userNote": "tags: |\n    push 的 tags \n    \n\nNote:\n\n当前 VPS 上的 docker-compose.yml 默认是：\n\nimage: ghcr.io/${GITHUB_REPOSITORY_OWNER:-local}/terravoice-api:${IMAGE_TAG:-latest}\n\n也就是说 VPS 如果没设置 IMAGE_TAG，会去拉 latest，所以这里同时 push 两个 tag",
       "createdBy": "user",
       "createdAt": "2026-09-09T12:59:21.358Z",
-      "updatedAt": "2026-09-09T12:59:34.564Z"
+      "updatedAt": "2026-09-11T02:38:21.005Z"
     },
     "section:user:44-59": {
       "title": "",
       "range": {
-        "startLine": 53,
-        "endLine": 68
+        "startLine": 54,
+        "endLine": 69
       },
       "anchorHash": "sha256:3e8656c601abfbb3650fd683073d74ee7797ca991e01da6a9f8bc5cd973fa252",
-      "userNote": "第二个 job 名为 deploy。即 CD.\n\nBasically, it updates and redeploys your backend on the server.\n\nIt SSHs into your VPS and pulls the latest Docker images for your app, then restarts the services with docker compose when the workflow is manually triggered.\n\n\n🔥 “manually triggered” means the deploy job only runs when you explicitly start the workflow yourself using Workflow Dispatch in GitHub",
+      "userNote": "deploy:\n    第二个 job 名为 deploy。即 CD.\n\nBasically, it updates and redeploys your backend on the server.\n\nIt SSHs into your VPS and pulls the latest Docker images for your app, then restarts the services with docker compose when the workflow is manually triggered.\n\n\n🔥 “manually triggered” means the deploy job only runs when you explicitly start the workflow yourself using Workflow Dispatch in GitHub",
       "createdBy": "user",
       "createdAt": "2026-09-09T11:43:18.427Z",
-      "updatedAt": "2026-09-09T12:58:22.464Z"
+      "updatedAt": "2026-09-11T02:50:25.604Z"
     },
     "section:user:48-59": {
       "title": "",
       "range": {
-        "startLine": 57,
-        "endLine": 68
+        "startLine": 58,
+        "endLine": 69
       },
       "anchorHash": "sha256:8088ab6c3229961c8ed22949b9a01fc98f51f30eb4d30e8f3620cc3300fd5493",
       "userNote": "部署步骤列表。\n\n",
       "createdBy": "user",
       "createdAt": "2026-09-09T11:49:03.485Z",
-      "updatedAt": "2026-09-09T12:58:22.464Z"
+      "updatedAt": "2026-09-11T02:51:27.513Z"
     },
     "section:user:51-59": {
       "title": "",
       "range": {
-        "startLine": 60,
-        "endLine": 68
+        "startLine": 61,
+        "endLine": 69
       },
       "anchorHash": "sha256:9d5f6da53169aab1673dc78a287bff8141d25466023ff404db1ae5530712b877",
-      "userNote": "with:  \nSSH 连接和脚本配置：\n\nhost: ${{ secrets.VPS_HOST }}  \nVPS 的主机地址，从仓库的 secrets 中读取。\n\nusername: ${{ secrets.VPS_USER }}  \nSSH 登录用户名，同样从 secrets 中读取。\n\nkey: ${{ secrets.VPS_SSH_KEY }}  \nSSH 私钥，用于免密登录 VPS。\n\nscript: |  \n在 VPS 上执行的脚本（多行）。",
+      "userNote": "with:  \n    SSH 连接和脚本配置：\n\nhost: ${{ secrets.VPS_HOST }}  \n    VPS 的主机地址，从仓库的 secrets 中读取。\n\nusername: ${{ secrets.VPS_USER }}  \n    SSH 登录用户名，同样从 secrets 中读取。\n\nkey: ${{ secrets.VPS_SSH_KEY }}  \n    SSH 私钥，用于免密登录 VPS。\n\nscript: |  \n    在 VPS 上执行的脚本（多行）。",
       "createdBy": "user",
       "createdAt": "2026-09-09T11:50:38.766Z",
-      "updatedAt": "2026-09-09T12:58:22.464Z"
+      "updatedAt": "2026-09-11T02:52:28.096Z"
     },
     "section:user:55-59": {
       "title": "",
       "range": {
-        "startLine": 64,
-        "endLine": 68
+        "startLine": 65,
+        "endLine": 69
       },
       "anchorHash": "sha256:83209f3c7937e5feb751ab169fe603707bd2cf85997a57d0a067f5b0e5679f5f",
-      "userNote": "script: |  \n在 VPS 上执行的脚本（多行）。\n\ncd /opt/terravoice  \n进入你在 VPS 上部署项目的目录（这里假设有 docker-compose.yml）。\n\ndocker compose pull  \n拉取最新镜像（包括你刚推到 GHCR 的新版本）。\n\ndocker compose up -d  \n以后台模式启动/更新服务。\n\ndocker compose ps  \n查看当前容器运行状态，方便确认部署结果。",
+      "userNote": "script: |  \n    在 VPS 上执行的脚本（多行）。\n\ncd /opt/terravoice  \n    进入你在 VPS 上部署项目的目录（这里假设有 docker-compose.yml）。\n\ndocker compose pull  \n    拉取最新镜像（包括你刚推到 GHCR 的新版本）。\n\ndocker compose up -d  \n    以后台模式启动/更新服务。\n\ndocker compose ps  \n    查看当前容器运行状态，方便确认部署结果。",
       "createdBy": "user",
       "createdAt": "2026-09-09T11:51:58.592Z",
-      "updatedAt": "2026-09-09T12:58:22.464Z"
+      "updatedAt": "2026-09-11T02:52:57.241Z"
     }
   },
   "lineNotes": {
@@ -212,182 +213,183 @@
       "anchorText": "name: Backend CI/CD",
       "userNote": "工作流的名字，在 GitHub Actions 页面里显示为 “Backend CI/CD”",
       "createdBy": "user",
-      "createdAt": "2026-09-09T10:28:19.055Z",
-      "updatedAt": "2026-09-09T10:28:19.055Z"
+      "createdAt": "2026-09-09T10:28:19.055Z"
     },
     "line:3": {
       "line": 3,
       "anchorText": "on:",
-      "userNote": "定义触发条件。\n\n",
+      "userNote": "on: 定义触发条件。\n\n",
       "createdBy": "user",
       "createdAt": "2026-09-09T10:28:31.670Z",
-      "updatedAt": "2026-09-09T10:28:31.670Z"
+      "updatedAt": "2026-09-11T02:14:32.669Z"
     },
     "line:4": {
       "line": 4,
       "anchorText": "  push:",
-      "userNote": "当有 push 到指定分支时触发。",
+      "userNote": "push: git push 时触发",
       "createdBy": "user",
       "createdAt": "2026-09-09T10:28:52.432Z",
-      "updatedAt": "2026-09-09T10:28:52.432Z"
+      "updatedAt": "2026-09-11T02:15:20.595Z"
     },
     "line:5": {
       "line": 5,
       "anchorText": "    branches: [main]",
-      "userNote": "只在 push 到 main 分支时触发。",
+      "userNote": "branches: [main]\n    只在 push 到 main 分支时触发。",
       "createdBy": "user",
       "createdAt": "2026-09-09T10:29:20.197Z",
-      "updatedAt": "2026-09-09T10:29:20.197Z"
+      "updatedAt": "2026-09-11T02:15:37.072Z"
     },
-    "line:6": {
+    "line:6:note:1": {
       "line": 6,
       "anchorText": "  pull_request:",
-      "userNote": "当有 PR 针对指定分支时触发。\n\n⚠️Note:\n1. PR 触发指的是 当别人（或你自己）发起 Pull Request 时，GitHub 会自动跑 CI 来检查代码是否能通过构建，而不是等你合并之后才跑。  \n也就是说：PR 阶段就会触发，但不会合并代码，它只是做检查。\n2. 这里只会做 CI 不会做 CD, 因为后面在 \"deploy\" 时有 if 条件.",
+      "userNote": "pull_request: 有 PR 时触发\n\n⚠️ Note:\n1. PR 触发指的是 当别人（或你自己）发起 Pull Request 时，GitHub 会自动跑 CI 来检查代码是否能通过构建，而不是等你合并之后才跑。  \n也就是说：PR 阶段就会触发，但不会合并代码，它只是做检查。\n2. 这里只会做 CI 不会做 CD, 因为后面在 \"deploy\" 时有 if 条件.",
+      "createdBy": "user",
+      "createdAt": "2026-09-11T02:16:11.611Z",
+      "updatedAt": "2026-09-11T02:16:44.993Z"
+    },
+    "line:6": {
+      "line": 7,
+      "anchorText": "    branches: [main]",
+      "userNote": "branches: [main]\n    当有 PR 针对指定分支时触发。\n\n",
       "createdBy": "user",
       "createdAt": "2026-09-09T10:29:42.270Z",
-      "updatedAt": "2026-09-09T10:36:43.665Z"
+      "updatedAt": "2026-09-11T02:17:09.049Z"
     },
     "line:8": {
       "line": 8,
       "anchorText": "  workflow_dispatch:",
-      "userNote": "允许在 GitHub Actions 页面手动点击运行（手动触发）。",
+      "userNote": "workflow_dispatch:\n    允许在 GitHub Actions 页面手动点击运行（手动触发）。",
       "createdBy": "user",
       "createdAt": "2026-09-09T10:30:00.729Z",
-      "updatedAt": "2026-09-09T10:31:17.583Z"
+      "updatedAt": "2026-09-11T02:20:22.345Z"
     },
     "line:11:note:1": {
       "line": 11,
       "anchorText": "  contents: read",
-      "userNote": "允许 GitHub Actions 读取仓库代码",
+      "userNote": "contents: read\n    允许 GitHub Actions 读取仓库代码",
       "createdBy": "user",
       "createdAt": "2026-09-09T12:50:40.674Z",
-      "updatedAt": "2026-09-09T12:50:40.674Z"
+      "updatedAt": "2026-09-11T02:21:48.749Z"
     },
     "line:12:note:1": {
       "line": 12,
       "anchorText": "  packages: write",
-      "userNote": "允许 GitHub Actions 往 GHCR 创建/上传 Docker Image",
+      "userNote": "packages: write\n    允许 GitHub Actions 往 GHCR 创建/上传 Docker Image",
       "createdBy": "user",
       "createdAt": "2026-09-09T12:50:46.994Z",
-      "updatedAt": "2026-09-09T12:50:46.994Z"
+      "updatedAt": "2026-09-11T02:22:04.180Z"
     },
     "line:10": {
-      "line": 14,
+      "line": 15,
       "anchorText": "jobs:",
-      "userNote": "jobs: 整体结构\n这里定义两个 job：build 和 deploy。分别对应 CI 和 CD",
+      "userNote": "jobs: \n    整体结构\n    这里定义两个 job：build 和 deploy。分别对应 CI 和 CD",
       "createdBy": "user",
-      "createdAt": "2026-09-09T10:30:21.826Z"
+      "createdAt": "2026-09-09T10:30:21.826Z",
+      "updatedAt": "2026-09-11T02:23:24.412Z"
     },
     "line:11": {
-      "line": 15,
+      "line": 16,
       "anchorText": "  build:",
-      "userNote": "Job 名称为 build",
+      "userNote": "build:\n    Job 名称为 build",
       "createdBy": "user",
-      "createdAt": "2026-09-09T10:38:27.764Z"
+      "createdAt": "2026-09-09T10:38:27.764Z",
+      "updatedAt": "2026-09-11T02:34:52.933Z"
     },
     "line:12": {
-      "line": 16,
+      "line": 17,
       "anchorText": "    runs-on: ubuntu-latest",
-      "userNote": "在 GitHub 提供的最新 Ubuntu runner 上执行。",
+      "userNote": "runs-on: ubuntu-latest\n    在 GitHub 提供的最新 Ubuntu runner 上执行。",
       "createdBy": "user",
-      "createdAt": "2026-09-09T10:38:40.337Z"
+      "createdAt": "2026-09-09T10:38:40.337Z",
+      "updatedAt": "2026-09-11T02:35:18.170Z"
     },
     "line:14": {
-      "line": 18,
+      "line": 19,
       "anchorText": "      - uses: actions/checkout@v5",
-      "userNote": "使用官方 checkout action，把当前仓库代码拉到 runner 的工作目录。\n\n[解释]\n1. actions/checkout@v4 会把你 GitHub 仓库的代码下载到 GitHub Actions 的虚拟机里，让后面的步骤能看到你的代码。\n2. GitHub Actions 的 runner 是一台 全新的、空的虚拟机。\n\n\nv5 是 actions/checkout 这个 GitHub Action 自己的版本，不是你的项目版本，也不是 GitHub Actions 的版本。",
+      "userNote": "uses: actions/checkout@v5\n    使用官方 checkout action，把当前仓库代码拉到 runner 的工作目录。\n\n[解释]\n1. actions/checkout@v5 这个 action 会把你 GitHub 仓库的代码下载到 GitHub Actions 的虚拟机里，让后面的步骤能看到你的代码。\n2. GitHub Actions 的 runner 是一台 全新的、空的虚拟机。\n3. 👉 v5 是 actions/checkout 这个 GitHub Action 自己的版本，不是你的项目版本，也不是 GitHub Actions 的版本。",
       "createdBy": "user",
       "createdAt": "2026-09-09T10:39:18.412Z",
-      "updatedAt": "2026-09-09T12:53:49.875Z"
+      "updatedAt": "2026-09-11T02:40:06.261Z"
     },
     "line:16": {
-      "line": 20,
+      "line": 21,
       "anchorText": "      - name: Setup .NET",
-      "userNote": "给这一步起一个名字，方便在 UI 中查看。",
+      "userNote": "name: Setup .NET\n    给这一步起一个名字，方便在 UI 中查看。",
       "createdBy": "user",
-      "createdAt": "2026-09-09T10:48:24.015Z"
+      "createdAt": "2026-09-09T10:48:24.015Z",
+      "updatedAt": "2026-09-11T02:40:31.238Z"
     },
     "line:17": {
-      "line": 21,
+      "line": 22,
       "anchorText": "        uses: actions/setup-dotnet@v6",
-      "userNote": "调用一个“官方写好的脚本”，让它在虚拟机里安装你指定版本的 .NET SDK。\n\nGitHub 把这些可复用的脚本称为 Actions",
+      "userNote": "uses: actions/setup-dotnet@v6\n    调用一个“官方写好的脚本”，让它在虚拟机里安装你指定版本的 .NET SDK。\n\n👉 注: GitHub 把这些可复用的脚本称为 Actions",
       "createdBy": "user",
       "createdAt": "2026-09-09T10:49:13.242Z",
-      "updatedAt": "2026-09-09T13:01:19.191Z"
+      "updatedAt": "2026-09-11T02:41:04.994Z"
     },
     "line:28": {
-      "line": 32,
+      "line": 33,
       "anchorText": "        if: github.event_name != 'pull_request'",
-      "userNote": "条件执行：只有在不是 pull_request 事件时才执行（即 push 或手动触发）。\nPR 构建只做 CI，不推镜像。",
+      "userNote": "if: github.event_name != 'pull_request'\n    条件执行：只有在不是 pull_request 事件时才执行（即 push 或手动触发）。\n    PR 构建只做 CI，不推镜像。",
       "createdBy": "user",
-      "status": {
-        "content": "stale",
-        "anchor": "confirmed"
-      },
       "createdAt": "2026-09-09T11:04:55.729Z",
-      "updatedAt": "2026-09-09T13:05:07.493Z"
+      "updatedAt": "2026-09-11T02:46:38.327Z"
     },
     "line:29": {
-      "line": 33,
-      "anchorText": "        uses: docker/login-action@v3",
-      "userNote": "使用官方 Docker 登录 action。",
+      "line": 34,
+      "anchorText": "        uses: docker/login-action@v4",
+      "userNote": "uses: docker/login-action@v4\n    使用官方 Docker 登录 action。",
       "createdBy": "user",
-      "status": {
-        "content": "stale",
-        "anchor": "confirmed"
-      },
       "createdAt": "2026-09-09T11:05:09.404Z",
-      "updatedAt": "2026-09-09T13:05:09.757Z"
+      "updatedAt": "2026-09-11T02:47:09.993Z"
     },
     "line:36:note:1": {
-      "line": 40,
+      "line": 42,
       "anchorText": "        run: echo \"OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}\" >> \"$GITHUB_ENV\"",
       "userNote": "${GITHUB_REPOSITORY_OWNER,,} 就是 Bash 的：把 GITHUB_REPOSITORY_OWNER 转成全小写。",
       "createdBy": "user",
-      "createdAt": "2026-09-09T12:40:53.864Z"
+      "createdAt": "2026-09-09T12:40:53.864Z",
+      "updatedAt": "2026-09-09T13:10:40.099Z"
     },
     "line:36": {
-      "line": 43,
+      "line": 44,
       "anchorText": "        if: github.event_name != 'pull_request'",
       "userNote": "同样只在非 PR 事件时执行（避免 PR 推镜像）。",
       "createdBy": "user",
-      "createdAt": "2026-09-09T11:07:28.149Z"
+      "createdAt": "2026-09-09T11:07:28.149Z",
+      "updatedAt": "2026-09-11T02:48:56.460Z"
     },
     "line:37": {
-      "line": 44,
-      "anchorText": "        uses: docker/build-push-action@v6",
+      "line": 45,
+      "anchorText": "        uses: docker/build-push-action@v7",
       "userNote": "使用官方 Docker build/push action。\n\n",
       "createdBy": "user",
-      "status": {
-        "content": "stale",
-        "anchor": "confirmed"
-      },
       "createdAt": "2026-09-09T11:07:39.369Z",
-      "updatedAt": "2026-09-09T13:05:19.912Z"
+      "updatedAt": "2026-09-11T02:49:09.999Z"
     },
     "line:45": {
-      "line": 54,
+      "line": 55,
       "anchorText": "    needs: build",
-      "userNote": "needs: build  \n声明依赖：deploy 必须在 build job 成功后才会运行。",
+      "userNote": "needs: build  \n    声明依赖：deploy 必须在 build job 成功后才会运行。",
       "createdBy": "user",
       "createdAt": "2026-09-09T11:36:41.298Z",
-      "updatedAt": "2026-09-09T12:58:22.464Z"
+      "updatedAt": "2026-09-11T02:51:02.751Z"
     },
     "line:47": {
-      "line": 56,
+      "line": 57,
       "anchorText": "    if: github.event_name == 'workflow_dispatch'",
       "userNote": "if: github.event_name == 'workflow_dispatch'  \n只有在手动触发（workflow_dispatch）时才执行部署。\n也就是说：push/PR 只做 CI 和推镜像，不自动部署。",
       "createdBy": "user",
       "createdAt": "2026-09-09T11:48:29.622Z",
-      "updatedAt": "2026-09-09T12:58:22.464Z"
+      "updatedAt": "2026-09-11T02:51:12.775Z"
     },
     "line:50": {
-      "line": 59,
+      "line": 60,
       "anchorText": "        uses: appleboy/ssh-action@v1",
-      "userNote": "uses: appleboy/ssh-action@v1\n使用 appleboy/ssh-action 通过 SSH 在远程服务器上执行命令。",
+      "userNote": "uses: appleboy/ssh-action@v1\n    使用 appleboy/ssh-action 通过 SSH 在远程服务器上执行命令。",
       "createdBy": "user",
       "createdAt": "2026-09-09T11:50:03.504Z",
-      "updatedAt": "2026-09-09T12:58:22.464Z"
+      "updatedAt": "2026-09-11T02:51:46.282Z"
     }
   }
 }

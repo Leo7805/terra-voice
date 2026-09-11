@@ -47,9 +47,9 @@ This file is the source of truth for the **outline**. Per `TEMPLATE_Common.md` "
   * [x] 7.2 Docker Compose for VPS.
   * [x] 7.3 Environment variables + secrets (`.env.example`).
   * [x] 7.4 Persistent storage for SQLite (named volume, verified Sep 9).
-  * [ ] 7.5 GitHub Actions CI/CD.
-    * [ ] 7.5.1 Create `.github/workflows/backend.yml` (build + push GHCR on push/PR; deploy job on `workflow_dispatch`).
-    * [ ] 7.5.2 Commit + push; verify build + image push on the Actions tab.
+  * [~] 7.5 GitHub Actions CI/CD.
+    * [x] 7.5.1 Create `.github/workflows/backend.yml` (build + push GHCR on push/PR; deploy job on `workflow_dispatch`).
+    * [x] 7.5.2 Commit + push; verify build + image push on the Actions tab.
     * [ ] 7.5.3 (After §7.9) Add VPS secrets (`VPS_HOST` / `VPS_USER` / `VPS_SSH_KEY`); verify manual deploy via `workflow_dispatch`.
   * [ ] 7.6 Caddy reverse proxy + HTTPS.
   * [x] 7.7 Container health checks (`HEALTHCHECK` + `/health/live`, `/health/ready`).
