@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-11T02:33:52.406Z",
+  "updatedAt": "2026-09-11T08:25:22.994Z",
   "workspaceRoot": "/Users/leo/Projects/terra-voice",
   "files": {
     ".dockerignore": {
@@ -23,9 +23,9 @@
     },
     "docs/plans/roadmap.md": {
       "noteFile": "files/379406216760-0043d6ac.json",
-      "sourceHash": "sha256:d2b4cbf123b6cbf8de02aeea26c69f5922b414f0e8dfe8b531825435b050f42d",
+      "sourceHash": "sha256:60ca4e1f988198445e2a9cb94f57669e43c30e037dfc8b8214a378752057fe11",
       "programmingLanguage": "markdown",
-      "updatedAt": "2026-09-09T12:09:55.344Z"
+      "updatedAt": "2026-09-11T08:25:22.994Z"
     },
     ".editorconfig": {
       "noteFile": "files/0947e2727d6b-6ddf3ab5.json",
@@ -65,9 +65,9 @@
     },
     ".github/workflows/backend.yml": {
       "noteFile": "files/4221e7060cb5-352c384a.json",
-      "sourceHash": "sha256:e963c911c2f3be8289fa147fc844669445053d4297a4d65587326c035d85ee77",
+      "sourceHash": "sha256:b062260ee4b1deb2041e53e845d962cbd82d93185e749ecba81b47efd75b792e",
       "programmingLanguage": "github-actions-workflow",
-      "updatedAt": "2026-09-11T02:33:52.406Z"
+      "updatedAt": "2026-09-11T08:10:14.690Z"
     }
   }
 }

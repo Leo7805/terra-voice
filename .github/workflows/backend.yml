@@ -3,14 +3,33 @@ name: Backend CI/CD
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - .czaza/**
+      - docs/**
+      - playground/**
+      - .gitignore  
+      - README.md
+      - .dockerignore
+      - .editorconfig
+      - .gitattributes
+      - .env
   pull_request:
     branches: [main]
+    paths-ignore:
+      - .czaza/**
+      - docs/**
+      - playground/**
+      - .gitignore
+      - README.md
+      - .dockerignore
+      - .editorconfig
+      - .gitattributes
+      - .env
   workflow_dispatch:
 
 permissions:
   contents: read
   packages: write
-
 
 jobs:
   build:
